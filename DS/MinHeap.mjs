@@ -11,13 +11,9 @@ class MinHeap {
     return this.heap.length <= 0;
   }
 
-  toArray() {
-    return [...this.heap]
-  }
-
   getMin() {
     // Get the min element at index 0 in the heap array
-    return this.heap.shift();
+    return this.heap[0];
   }
 
   insert(node) {
@@ -88,16 +84,16 @@ class MinHeap {
         leftChildIndex = current * 2 + 1;
         rightChildIndex = current * 2 + 2;
       }
-    }
 
-    if (
-      this.heap[rightChildIndex] === undefined &&
-      this.heap[leftChildIndex] < this.heap[current]
-    ) {
-      [this.heap[current], this.heap[leftChildIndex]] = [
-        this.heap[leftChildIndex],
-        this.heap[current],
-      ];
+      if (
+        this.heap[rightChildIndex] === undefined &&
+        this.heap[leftChildIndex] < this.heap[current]
+      ) {
+        [this.heap[current], this.heap[leftChildIndex]] = [
+          this.heap[leftChildIndex],
+          this.heap[current],
+        ];
+      }
     } else if (this.heap.length === 2) {
       this.heap.splice(1, 1);
     } else {
@@ -109,17 +105,21 @@ class MinHeap {
 }
 
 const heap = new MinHeap();
-heap.insert(11);
-heap.insert(3);
-heap.insert(6);
 heap.insert(1);
+heap.insert(4);
+heap.insert(5);
+heap.insert(1);
+heap.insert(3);
+heap.insert(4);
+heap.insert(2);
+heap.insert(6);
 
 console.log(heap.empty());
 console.log(heap.toArray());
-console.log(heap.getMin());
-console.log(heap.getMin());
-console.log(heap.getMin());
-console.log(heap.getMin());
+console.log(heap.remove());
+console.log(heap.remove());
+console.log(heap.remove());
+console.log(heap.remove());
 console.log(heap.empty());
 console.log(heap.toArray());
 
