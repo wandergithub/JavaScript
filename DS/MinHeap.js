@@ -9,7 +9,7 @@ class MinHeap {
 
   getMin() {
     // Get the min element at index 0 in the heap array
-    this.heap.shift();
+    return this.heap.shift();
   }
 
   insert(node) {
@@ -23,7 +23,7 @@ class MinHeap {
       //If we have more nodes than the head. HeapifyUp
       let current_index = this.heap.length - 1;
       while (current_index > 0 && this.heap[Math.floor((current_index - 1) / 2)] > this.heap[current_index]) {
-        [this.heap[Math.floor((current_index - 1) / 2)], this.heap(current_index)] = [this.heap(current_index), this.heap[Math.floor((current_index - 1) / 2)]];
+        [this.heap[Math.floor((current_index - 1) / 2)], this.heap[current_index]] = [this.heap[current_index], this.heap[Math.floor((current_index - 1) / 2)]];
         current_index = Math.floor((current_index - 1) / 2);
       }
     }
@@ -75,3 +75,13 @@ class MinHeap {
   
 
 }
+
+const heap = new MinHeap();
+heap.insert(11);
+heap.insert(3);
+heap.insert(6);
+heap.insert(1);
+
+console.log(heap.getMin());
+console.log(heap.getMin());
+console.log(heap.getMin());
