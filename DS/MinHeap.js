@@ -114,3 +114,5 @@ console.log(heap.toArray());
 console.log(heap.getMin());
 console.log(heap.getMin());
 console.log(heap.getMin());
+
+export default MinHeap;
