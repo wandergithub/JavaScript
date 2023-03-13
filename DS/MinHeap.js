@@ -7,6 +7,10 @@ class MinHeap {
     this.heap = [];
   }
 
+  toArray() {
+    return [...this.heap]
+  }
+
   getMin() {
     // Get the min element at index 0 in the heap array
     return this.heap.shift();
@@ -22,8 +26,18 @@ class MinHeap {
     if (this.heap.length > 1) {
       //If we have more nodes than the head. HeapifyUp
       let current_index = this.heap.length - 1;
-      while (current_index > 0 && this.heap[Math.floor((current_index - 1) / 2)] > this.heap[current_index]) {
-        [this.heap[Math.floor((current_index - 1) / 2)], this.heap[current_index]] = [this.heap[current_index], this.heap[Math.floor((current_index - 1) / 2)]];
+      while (
+        current_index > 0 &&
+        this.heap[Math.floor((current_index - 1) / 2)] >
+          this.heap[current_index]
+      ) {
+        [
+          this.heap[Math.floor((current_index - 1) / 2)],
+          this.heap[current_index],
+        ] = [
+          this.heap[current_index],
+          this.heap[Math.floor((current_index - 1) / 2)],
+        ];
         current_index = Math.floor((current_index - 1) / 2);
       }
     }
@@ -47,12 +61,23 @@ class MinHeap {
       let leftChildIndex = current * 2 + 1;
       let rightChildIndex = current * 2 + 2;
 
-      while (this.heap[leftChildIndex] && this.heap[rightChildIndex] && (this.heap[current] > this.heap[leftChildIndex] || this.heap[current] > this.heap[rightChildIndex])) {
+      while (
+        this.heap[leftChildIndex] &&
+        this.heap[rightChildIndex] &&
+        (this.heap[current] > this.heap[leftChildIndex] ||
+          this.heap[current] > this.heap[rightChildIndex])
+      ) {
         if (this.heap[leftChildIndex] < this.heap[rightChildIndex]) {
-          [this.heap[current], this.heap[leftChildIndex]] = [this.heap[leftChildIndex], this.heap[current]];
-          current = leftChildIndex
+          [this.heap[current], this.heap[leftChildIndex]] = [
+            this.heap[leftChildIndex],
+            this.heap[current],
+          ];
+          current = leftChildIndex;
         } else {
-          [this.heap[current], this.heap[rightChildIndex]] = [this.heap[rightChildIndex], this.heap[current]];
+          [this.heap[current], this.heap[rightChildIndex]] = [
+            this.heap[rightChildIndex],
+            this.heap[current],
+          ];
           current = rightChildIndex;
         }
 
@@ -61,19 +86,22 @@ class MinHeap {
       }
     }
 
-    if (this.heap[rightChildIndex] === undefined && this.heap[leftChildIndex] < this.heap[current]) {
-      [this.heap[current], this.heap[leftChildIndex]] = [this.heap[leftChildIndex], this.heap[current]]
-    }else if (this.heap.length === 2) {
-      this.heap.splice(1, 1)
-  } else {
+    if (
+      this.heap[rightChildIndex] === undefined &&
+      this.heap[leftChildIndex] < this.heap[current]
+    ) {
+      [this.heap[current], this.heap[leftChildIndex]] = [
+        this.heap[leftChildIndex],
+        this.heap[current],
+      ];
+    } else if (this.heap.length === 2) {
+      this.heap.splice(1, 1);
+    } else {
       return null;
+    }
+
+    return smallest;
   }
-
-
-  return smallest;
-  }
-  
-
 }
 
 const heap = new MinHeap();
@@ -82,6 +110,7 @@ heap.insert(3);
 heap.insert(6);
 heap.insert(1);
 
+console.log(heap.toArray());
 console.log(heap.getMin());
 console.log(heap.getMin());
 console.log(heap.getMin());
