@@ -7,6 +7,10 @@ class MinHeap {
     this.heap = [];
   }
 
+  empty() {
+    return this.heap.length <= 0;
+  }
+
   toArray() {
     return [...this.heap]
   }
@@ -110,9 +114,13 @@ heap.insert(3);
 heap.insert(6);
 heap.insert(1);
 
+console.log(heap.empty());
 console.log(heap.toArray());
 console.log(heap.getMin());
 console.log(heap.getMin());
 console.log(heap.getMin());
+console.log(heap.getMin());
+console.log(heap.empty());
+console.log(heap.toArray());
 
 export default MinHeap;
