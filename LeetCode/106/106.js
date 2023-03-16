@@ -1,10 +1,9 @@
 /**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
+ Given two integer arrays inorder and postorder where inorder is the 
+ inorder traversal of a binary tree and postorder is the postorder traversal of the same tree, 
+ construct and return the binary tree.
+
+    geeksforgeeks: https://www.geeksforgeeks.org/construct-a-binary-tree-from-postorder-and-inorder/
  */
 /**
  * @param {number[]} inorder
